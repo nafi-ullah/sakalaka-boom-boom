@@ -84,6 +84,12 @@ while True:
 				if (ptime - ctime) > 0.8:
 					curr_tool = getTool(x)
 					print("your current tool set to : ", curr_tool)
+					op = cv2.bitwise_and(frm, frm, mask=mask)
+					frm[:, :, 1] = op[:, :, 1]
+					frm[:, :, 2] = op[:, :, 2]
+					if curr_tool == "circle" :
+						cv2.imwrite("currentImage.png", frm)
+						print("your current tool set to : ", curr_tool)
 					time_init = True
 					rad = 40
 
